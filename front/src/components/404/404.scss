@@ -1,0 +1,29 @@
+.flex {
+    height: 80vh;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        font-size: 2.5rem;
+        padding-bottom: 1rem;
+    }
+
+    p {
+        font-size: 1.2rem;
+    }
+
+    div {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        
+    }
+
+
+}
