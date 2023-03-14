@@ -19,6 +19,7 @@ import React from 'react';
 const Navbar = () => {
   const { toggle, darkMode } = useContext(DarkModeContext);
   const { currentUser } = useContext(AuthContext);
+  const token = currentUser.token
 
   console.log(currentUser.profilePic)
 
@@ -28,6 +29,24 @@ const Navbar = () => {
     const res = await axios.post('http://localhost:8800/api/auth/logout', {})
     window.location.reload();
   }
+
+  const deleteAccount = async() => {
+    await axios.delete(`http://localhost:8800/api/users/${currentUser.id}`, {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    })
+    .then(res => {
+        localStorage.removeItem('user');
+        window.location.reload();
+    })
+    .catch(err => {
+        console.log(err);
+    })
+};
+
+
+  
 
   return (
      <nav className="navbar navbar-expand-lg ">
@@ -68,7 +87,9 @@ const Navbar = () => {
   <ul className="dropdown-menu">
             <li><a className="dropdown-item" href= {`http://localhost:3000/profile/${currentUser.id}`}>Vist Your Profile</a></li>
             <li><hr className="dropdown-divider"></hr></li>
-            <li onClick={ HandleLogout }><a className="dropdown-item" href="#">Logout</a></li>
+            <li onClick={ HandleLogout } className="dropdown-item">Logout</li>
+            <li><hr className="dropdown-divider"></hr></li>
+            <li onClick={ deleteAccount } className="dropdown-item">Delete Account</li>
           </ul>
   </li>
   {/* </Link>  */}

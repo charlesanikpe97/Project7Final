@@ -43,3 +43,30 @@ export const updateUser = (req, res) => {
     );
   });
 };
+
+export const deleteAccount = (req, res, next) => {
+  if (req.body.password) {
+      let q = `SELECT * FROM user WHERE id=?`;
+      db.query (q, [req.params.id], function (err, result) {
+          let user = result[0];
+          bcrypt.compare(req.body.password, user.password)
+              .then(valid => {
+                  if (!valid) {
+                      return res.status(401).json({ error: "Incorrect password!" });
+                  } else {
+                      bcrypt.hash(req.body.password, 10)
+                          .then(hash => {
+                              let q = `DELETE FROM user WHERE id=?`;
+                              db.query(q, [req.params.id], function (err, result) {
+                                  if (err) throw err;
+                                  console.log(result);
+                                  res.status(200).json({ message: `Account number ${req.params.id} deleted` });
+                              });
+                          })
+                          .catch(error => res.status(500).json({ error }));
+                  }
+              })
+              .catch(error => res.status(500).json({ message: "Authentication error" }));
+      })
+  }
+}
