@@ -61,14 +61,20 @@ const Update = ({ setOpenUpdate, user }) => {
   }
 
   return (
-    <div className="update">
-      <div className="wrapper">
-        <h1>Update Your Profile</h1>
-        <form>
+  <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div className="modal update" tabindex="-1">
+  <div className="modal-dialog wrapper">
+    <div className="modal-content">
+      <div className="modal-header">
+        <h5 class="modal-title">Update Your Profile</h5>
+        <button type="button" className="btn-close close" dataBsDismiss="modal" ariaLabel="Close" onClick={() => setOpenUpdate(false)}></button>
+      </div>
+      <div className="modal-body">
+         <form>
           <div className="files">
             <label htmlFor="cover">
               <span>Cover Picture</span>
-              <div className="imgContainer">
+               <div className="imgContainer">
                 <img
                   src={
                     cover
@@ -142,13 +148,18 @@ const Update = ({ setOpenUpdate, user }) => {
             value={texts.website}
             onChange={handleChange}
           />
-          <button onClick={handleClick}>Update</button>
         </form>
-        <button className="close" onClick={() => setOpenUpdate(false)}>
-          close
-        </button>
+      </div>
+    
+      <div className="modal-footer">
+        <button type="button" className="btn btn-secondary close" dataBsDismiss="modal" onClick={() => setOpenUpdate(false)}>Close</button>
+        <button type="button" className="btn btn-primary" onClick={handleClick}>Save changes</button>
       </div>
     </div>
+  </div>
+</div>
+</div>
+   
   );
 };
 

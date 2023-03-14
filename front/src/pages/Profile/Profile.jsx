@@ -68,16 +68,6 @@ const Profile = () => {
     return window.location.reload();
   }
 
-  const HandleLogout = async() => {
-    localStorage.removeItem('user')
-    document.cookie = "accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    const res = await axios.post('http://localhost:8800/api/auth/logout', {})
-    window.location.reload();
-    // await axios.post('http://localhost:8800/api/auth/logout', currentUser = useState(
-    //   JSON.parse(localStorage.removeItem('user')))) 
-    //   return console.log(localStorage.user)
-      
-  }
    
   
     
@@ -125,7 +115,7 @@ const Profile = () => {
                   </div>
                 </div>
                 <div className="flexButtons">
-                  <button id="red" onClick={ HandleLogout }>Logout</button>
+                  {/* <button id="red" onClick={ HandleLogout }>Logout</button> */}
                 {rIsLoading ? (
                   "loading"
                 ) : userId === currentUser.id ? (

@@ -1,11 +1,10 @@
-import './Signup.scss';
+import '../Login/Login.scss';
 import {grupomaniaRedLogo, signupPageSvg} from '../../components/SVGs/svgs';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {useState} from 'react';
 import axios from 'axios';
-import CloseIcon from '@mui/icons-material/Close';
-import CheckIcon from '@mui/icons-material/Check';
+
 
 
 const Signup = () => {

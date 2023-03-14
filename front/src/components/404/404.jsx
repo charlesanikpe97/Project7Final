@@ -12,7 +12,7 @@ const PageNotFound = () =>{
             <p>Sorry, we can't find the page you're after, chances are you won't either. Please click the button below to get redirected back home. Thanks.</p>
             <div>
                 <ArrowBackIcon/>
-               <Link to = { 'http://localhost:3000/login' } style = {{ color: "#FDA902" }}> <span role={'button'}>Take me back home please, I'm cold and confused.</span> </Link>
+               <Link to = { 'http://localhost:3000' } style = {{ color: "#FDA902" }}> <span role={'button'}>Take me back home please, I'm cold and confused.</span> </Link>
             </div>
         </div>
     )
